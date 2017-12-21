@@ -7,17 +7,19 @@
     "tsc": "tsc -watch",
     "demon": "nodemon ./public/app.js localhost 3000",
     "test": "mocha public/test",
-    "test1": "nodemon --exec \" mocha public/test -R min \" ",
-    "ubertest":"concurrently \"npm run tsc \" \"npm run test1\"",
-    "solltest":"npm run tsc | npm run test1"
+    "test1": "nodemon --exec \" mocha public/test -R list \" ",
+    "ubertest": "concurrently \"npm run tsc \" \"npm run test1\"",
+    "solltest": "npm run tsc | npm run test1"
   },
   "devDependencies": {
+    "@types/chai": "^4.0.10",
     "@types/mocha": "^2.2.44",
+    "chai": "^4.1.2",
     "concurrently": "^3.5.0",
     "mocha": "^4.0.1",
     "nodemon": "^1.12.1"
   },
   "dependencies": {
-    "@types/node": "^8.5.1"
+    "@types/node": "^8.5.2"
   }
 }

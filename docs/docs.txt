@@ -1,0 +1,4 @@
+//Rodzaje ciekawe reporterow dla mocha
+// -R --reporter
+//-R min -pokazuje tylko bledy i liczbe testow ok
+//-R list - pokazuje liste z nazwa testu
