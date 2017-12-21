@@ -1,0 +1,23 @@
+{
+  "name": "death-clock",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"npm run tsc\" \"npm run demon\" ",
+    "start": "cd public && node app.js",
+    "tsc": "tsc -watch",
+    "demon": "nodemon ./public/app.js localhost 3000",
+    "test": "mocha public/test",
+    "test1": "nodemon --exec \" mocha public/test -R min \" ",
+    "ubertest":"concurrently \"npm run tsc \" \"npm run test1\"",
+    "solltest":"npm run tsc | npm run test1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.44",
+    "concurrently": "^3.5.0",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "@types/node": "^8.5.1"
+  }
+}

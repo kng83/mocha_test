@@ -1,0 +1,12 @@
+{
+  "name": "death-clock",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"npm run start\" \"npm run tsc\"",
+    "start": "cd public && node app.js",
+    "tsc": "tsc -watch"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  }
+}
