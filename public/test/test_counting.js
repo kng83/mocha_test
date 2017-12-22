@@ -1,10 +1,13 @@
 "use strict";
 exports.__esModule = true;
 var assert = require("assert");
-require("chai/register-should");
-require("chai-as-promised");
-var chai_1 = require("chai");
 var class_duration_1 = require("../src/class_duration");
+var chai = require("chai");
+var chaiAsPromised = require("chai-as-promised");
+var expect = chai.expect;
+var assertt = chai.assert;
+chai.should();
+chai.use(chaiAsPromised);
 describe('Test 1', function () {
     it('This value should be equal 2', function () {
         assert(2 === 2);
@@ -30,13 +33,13 @@ describe('Test 1', function () {
         value.should.be.equal(2);
     });
     it('Expect to have only keys a & b', function () {
-        chai_1.expect({ a: 1, b: 2 }).to.have.all.keys('a', 'b');
+        expect({ a: 1, b: 2 }).to.have.all.keys('a', 'b');
     });
     it('Should have keys a & b', function () {
         ({ a: 1, b: 3, c: 4 }).should.have.any.keys('a', 'c');
     });
     it('Target object deeply (but not strictly) has property x: {a: 1} ', function () {
-        chai_1.expect({ a: 1 }).to.have.deep.property('a');
+        expect({ a: 1 }).to.have.deep.property('a');
     });
     it('Async test bobo', function (done) {
         var dur = new class_duration_1.Duration('Bobo');
@@ -47,8 +50,9 @@ describe('Test 1', function () {
     });
     it('Second async test', function () {
         var dur = new class_duration_1.Duration('Koko');
-        dur.timeOut().then(function (value) {
-            value.shouldequal('Koko');
-        });
+        return dur.timeOut().should.eventually.to.be.equal('Koko');
+    });
+    it('Third async test with assert', function () {
+        return assertt.eventually.equal(new class_duration_1.Duration('Balbo').timeOut(), 'Balbo');
     });
 });
