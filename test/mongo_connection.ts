@@ -13,7 +13,10 @@ export interface MainSchema{
 
 mongoose.connect('mongodb://localhost/mainDB',{
     useMongoClient: true
+},()=>{
+   console.log('Db connected');
 });
+
 
 const db = mongoose.connection;
 db.on('error',console.error.bind(console, 'connection error appears'));
@@ -25,7 +28,11 @@ db.once('open', ()=>{
 const mainDBSchema = new mongoose.Schema({
     name:String,
     email:String,
-    age: Number
+    age: Number,
+    time:Date
+
+},{
+    versionKey:'Bobo_super_v',
 
 });
 
