@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "concurrently \"npm run tsc\" \"npm run demon\" ",
     "start": "cd public && node app.js",
-    "tsc": "tsc -watch",
+    "tsc": "tsc --watch",
     "demon": "nodemon ./public/app.js localhost 3000",
     "test": "mocha public/test",
     "test1": "nodemon --exec \" mocha public/test -R list \" ",

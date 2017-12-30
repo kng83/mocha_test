@@ -1,60 +1,32 @@
-import {UserCol} from './mongo_connection';
+import {PeopleCollection} from './mongo_connection';
 import * as assert from 'assert';
-import {PeopleSchema,People} from "./mongo_connection";
+import {PeopleSchemaInterface,PeopleInterface} from "../src/schemas/people.schema";
+import {peopleArray} from '../src/data/people_data';
 
 
-
-
-
-let peopleArray:People[]= [
-    {
-        name: 'Pawel',
-        email: 'test@test.com',
-        age: 34,
-        time: Date.now()
-    },
-    {
-        name: 'Bobo',
-        email: 'bobo@test.com',
-        age: 4,
-        time: Date.now()
-    },
-    {
-        name: 'Koko',
-        email: 'koko@test.com',
-        age: 14,
-        time: Date.now()
-    },
-    {
-        name: 'Porky',
-        email: 'porky@test.com',
-        age: 1,
-        time: Date.now()
-    }
-];
 
 /*This is multiple adding function responsible for pushing user
 * to database.*/
 
-describe('This is db connection', () => {
-    beforeEach((done) => {
+describe('This is db connection to people collection', () => {
 
-        UserCol.collection.drop(() => {
+    beforeEach((done) => {
+        PeopleCollection.collection.drop(() => {
             done();
         });
     });
 
     /*Create new Model to DB
-    * version with save const take = new UserCol(people).save*/
+    * version with save const take = new PeopleCollection(people).save*/
     for (let people of peopleArray) {
-        it('Finds Pawel in dataBase', (done) => {
+        it('Finds Pawel in dataBase check ', (done) => {
 
-            UserCol.collection.insertOne(people)
+            PeopleCollection.collection.insertOne(people)
                 .then((doc) => {
                     console.log('Save to db');
-                    UserCol
+                    PeopleCollection
                         .findOne({email: people.email})
-                        .then((doc: PeopleSchema) => {
+                        .then((doc: PeopleSchemaInterface) => {
                             assert(doc.name === people.name);
                             console.log(people.name);
                             done();
@@ -65,13 +37,13 @@ describe('This is db connection', () => {
 
     /*Instead of go over the for loop use method insertMany method*/
     it('This is test insert many', (done) => {
-        UserCol.collection.insertMany(peopleArray)
+        PeopleCollection.collection.insertMany(peopleArray)
             .then((downloadOk) => {
                 assert(downloadOk.result.ok === 1);
-                UserCol
+                PeopleCollection
                     .collection
                     .findOne({name: 'Bobo'})
-                    .then((people: People) => {
+                    .then((people: PeopleSchemaInterface) => {
                         assert(people.email === 'bobo@test.com');
                         assert(people.age === 4);
                         done();
@@ -80,17 +52,17 @@ describe('This is db connection', () => {
     });
 
     it('Should update bobo@test.com to superbobo@test.com',(done)=>{
-        UserCol.collection.insertMany(peopleArray)
+        PeopleCollection.collection.insertMany(peopleArray)
             .then((downloadOk)=>{
                 console.log('4')
-                UserCol
+                PeopleCollection
                     .findOneAndUpdate(
                         {email: 'bobo@test.com'}
                         ,{email:'superbobo@test.com'}
-                        ,(err,people:PeopleSchema)=>{
+                        ,(err,people:PeopleSchemaInterface)=>{
 
-                            UserCol.collection.findOne({name:'Bobo'})
-                                .then((people:People)=>{
+                            PeopleCollection.collection.findOne({name:'Bobo'})
+                                .then((people:PeopleInterface)=>{
                                     console.log(people.email);
                                     assert(people.email === 'superbobo@test.com');
                                     done();

@@ -9,7 +9,7 @@ function takeWholeTest() {
     var assertt = chai.assert;
     chai.should();
     chai.use(chaiAsPromised);
-    describe('Test 1', function () {
+    xdescribe('Test 1', function () {
         it('This value should be equal 2', function () {
             assert(2 === 2);
         });

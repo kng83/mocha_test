@@ -8,7 +8,8 @@ import * as chaiAsPromised from "chai-as-promised";
 
 
 /*Preparing interface for chai
-* Take whole test*/
+* Take whole test and make test*/
+
 function takeWholeTest() {
 
 
@@ -18,7 +19,7 @@ function takeWholeTest() {
     chai.use(chaiAsPromised);
 
 
-    describe('Test 1', () => {
+    xdescribe('Test 1', () => {
         it('This value should be equal 2', () => {
             assert(2 === 2);
         });
