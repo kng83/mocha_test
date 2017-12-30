@@ -56,5 +56,12 @@ function takeWholeTest() {
         it('Third async test with assert', function () {
             return assertt.eventually.equal(new class_duration_1.Duration('Balbo').timeOut(), 'Balbo');
         });
+        it('Check this type', function () {
+            function bobo(paco) {
+                console.log(paco.name, paco.age);
+                return paco;
+            }
+            bobo({ name: 'youre', age: 4 });
+        });
     });
 }
