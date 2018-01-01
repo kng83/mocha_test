@@ -1,5 +1,11 @@
 import chalk from 'chalk';
 
+
+/*Prosty decorator w przypadku pobierania nazwy konstruktora (prototypu)
+* nalezy zrobic rzutowanie typu
+*
+* */
+
 function simpleDecorator(constructor:Function){
     console.log('decorator started and is super');
     console.log (`to jest constructor: ${constructor}`);
