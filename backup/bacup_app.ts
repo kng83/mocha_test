@@ -3,68 +3,29 @@ import {MongoClient} from "mongodb";
 
 
 class MyBase extends MongoClient {
-    url = "mongodb://localhost:27017/BagnoDB";
-   // ss:Promise<Db>;
+    url = "mongodb://localhost:27017/superDB";
 
-
-    constructor() {
-        super();
-
-        //create db if doesn't exist
-        MyBase.connect(this.url).then((client: Db) => {
-            console.log('Db is created')
-            client.close()
-        }).catch((err) => {
-            console.log('something is not ok', err.name)
-        });
-       // this.vv();
-
-    }
-    createCollection(name:string){
-        MyBase.connect(this.url).then((client:Db)=>{
-            const db = client.db('BagnoDB');
-            db.createCollection(name).then((value)=>{
-                console.log(value.collectionName);
-                client.close().catch((err)=>{console.log(err)});
-            }).catch((err)=>{console.log(err)})
-        }).catch((err)=>{console.log(err)})
-    };
-
-    vv(){
-
-        return MyBase.connect(this.url).then((client:Db)=>{
-
-            return new Promise((resolve)=>{
-                resolve(client.db('BagnoDB'));
-                // client.close();
-            });
-
-        });
-
-    }
-    get pp(){
-        return MyBase.connect(this.url).then((client:Db)=>{
-
-            return new Promise((resolve)=>{
-                resolve({baza:client.db('BagnoDB'),close:client.close()});
-
-            });
-
-        });
-    }
 }
 
-
 const biko = new MyBase();
-biko.createCollection('pampers');
-// biko.vv().then((db:Db)=>{
-//     db.collection('pampers').insertOne({name:'kooko'}).catch((err)=>{console.log(err)});
-// });
-biko.pp.then((db:Db)=>{
-    db.collection('pampers').insertOne({name: 'valdek'}).catch((err)=>{console.log(err)});
-});
 
-//interface
+// biko.connect("mongodb://localhost:27017/kufel",(error:MongoError,client:Db)=>{
+//
+//     const db=client.db('kufel');
+//     db.createCollection('rosomak').then((extra)=>{
+//
+//         console.log('this here')
+//         db.collection('rosomak')
+//             .insertOne({name:'Bobo', drug:'text'})
+//             .then(()=>{console.log('ok')
+//                 client.close();
+//             }).catch((err)=>{
+//                 console.log(err);
+//         });
+//
+//     });
+// });
+
 interface Schema {
     name: string;
     age: number;
@@ -99,12 +60,10 @@ function omin() {
             .findOne({name: 'Robo'})
             .then((value: Schema) => {
                 console.log(value.age);
-                client.close();
             }).catch((err) => {
             console.log('You got an error', err.name)
         });
-
-    });//
+    });
 
     MongoClient.connect("mongodb://localhost:27017")
         .then((client: Db) => {
@@ -112,13 +71,11 @@ function omin() {
             db.collection('Hounds')
                 .updateOne({name: 'Robo'}, {$set: {name: 'Kot'}}, {upsert: true})
                 .then((check) => {
-                    client.close();
                     console.log('Update confirm');
                 }).catch((err) => {
                 console.log(err)
 
             });
-
         }).catch((err) => {
         console.log(err)
     });

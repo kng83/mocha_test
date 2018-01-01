@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "concurrently \"npm run tsc\" \"npm run demon\" ",
-    "start": "cd public && node app.js",
+    "dev2": "concurrently \"npm run tsc\" \"npm run decorator\"",
     "tsc": "tsc --watch",
     "demon": "nodemon ./public/app.js localhost 3000",
+    "decorator": "nodemon ./public/decorator.js localhost 3000",
     "test": "mocha public/test",
     "test1": "nodemon --exec \" mocha public/test -R list \" ",
     "ubertest": "concurrently \"npm run tsc \" \"npm run test1\"",
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@types/chai": "^4.0.10",
     "@types/chai-as-promised": "^7.1.0",
+    "@types/chalk": "^2.2.0",
     "@types/es6-promise": "0.0.33",
     "@types/mocha": "^2.2.44",
     "@types/mongodb": "^2.2.18",
@@ -27,6 +29,7 @@
   },
   "dependencies": {
     "@types/node": "^8.5.2",
+    "chalk": "^2.3.0",
     "mongodb": "^3.0.1"
   }
 }

@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var timers_1 = require("timers");
 var Duration = (function () {
     function Duration(name) {
