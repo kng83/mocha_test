@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var chalk_1 = require("chalk");
 function simpleDecorator(constructor) {
@@ -79,16 +82,74 @@ function methodDecorator(target, methodName, descriptor) {
     console.log("methodDecorator descriptor: " + descriptor.value);
     console.log("another target.constructor name: " + target.constructor.name);
 }
+function auditDecorator(target, methodName, descriptor) {
+    var orginalFunction = target[methodName];
+    var auditFunction = function () {
+        console.log("Wywolano podmienina wersje funkcji " + methodName);
+        orginalFunction.apply(this, arguments);
+    };
+    target[methodName] = auditFunction;
+    return target;
+}
 var HelpMethodClass = (function () {
     function HelpMethodClass() {
     }
     HelpMethodClass.prototype.print = function (output) {
         console.log(chalk_1.default.blue("To jest output funkcji print: " + output));
     };
+    HelpMethodClass.prototype.show = function (output) {
+        console.log("This is output from show: " + output);
+    };
     __decorate([
         methodDecorator
     ], HelpMethodClass.prototype, "print", null);
+    __decorate([
+        auditDecorator
+    ], HelpMethodClass.prototype, "show", null);
     return HelpMethodClass;
 }());
 var helpM = new HelpMethodClass();
 helpM.print('pawel');
+helpM.show('bobo');
+function parameterDecorator(target, methodName, parameterIndex) {
+    console.log(chalk_1.default.blue("parameterDecorator target: " + target));
+    console.log("parameterDecorator class name: " + target.constructor.name);
+    console.log("parameterDecorator custom: " + target[methodName]);
+    console.log("parameterDecorator methodName: " + methodName);
+    console.log("parameterDecorator parameterIndex: " + parameterIndex);
+    console.log("parameterDecorator empty test}");
+    target[methodName] = function (value) {
+        return 'Arnold';
+    };
+    return target;
+}
+var ParaDecClass = (function () {
+    function ParaDecClass() {
+    }
+    ParaDecClass.prototype.print = function (value) {
+        return value;
+    };
+    __decorate([
+        __param(0, parameterDecorator)
+    ], ParaDecClass.prototype, "print", null);
+    return ParaDecClass;
+}());
+var pdc = new ParaDecClass();
+console.log(pdc.print());
+var first = function (value) {
+    if (value === void 0) { value = '4'; }
+    console.log("This is value " + value);
+    return value;
+};
+var second = function () {
+    var options = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        options[_i] = arguments[_i];
+    }
+    var kot = function (name) {
+        return 4;
+    };
+    console.log('Pies ktory biega');
+    return first.apply(this, arguments);
+};
+console.log(chalk_1.default.cyan(second('11')));
