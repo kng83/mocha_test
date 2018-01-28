@@ -8,7 +8,7 @@
     "tsc": "tsc --watch",
     "demon": "nodemon ./public/app.js localhost 3000",
     "decorator": "nodemon ./public/decorator.js localhost 3000",
-    "prototypes": "nodemon ./public/prototypes.js localhost 3000",
+    "prototypes": "nodemon ./books/prototypes.js localhost 3000",
     "event":"nodemon ./books/event.js localhost 3000",
     "this": "nodemon ./books/aboutThis.js localhost 3000 ",
     "test": "mocha public/test",
