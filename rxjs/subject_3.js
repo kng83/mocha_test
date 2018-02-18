@@ -1,0 +1,38 @@
+const Rx = require('rxjs');
+
+let source = Rx.Observable.interval(500);
+let subject = new Rx.Subject();
+let multicasted = source.multicast(subject);
+let subscription1, subscription2, subscriptionConnect;
+
+subscription1 = multicasted.subscribe({
+    next: (v) => console.log('observerA: ' + v)
+});
+// We should call `connect()` here, because the first
+// subscriber to `multicasted` is interested in consuming values
+// bedzie tez dzialalo wyzej
+
+subscriptionConnect = multicasted.connect();
+
+setTimeout(() => {
+    subscription2 = multicasted.subscribe({
+        next: (v) => console.log('observerB: ' + v)
+    });
+}, 600);
+
+setTimeout(() => {
+    subscription1.unsubscribe();
+}, 1200);
+
+// We should unsubscribe the shared Observable execution here,
+// because `multicasted` would have no more subscribers after this
+setTimeout(() => {
+    subscription2.unsubscribe();
+    subscriptionConnect.unsubscribe(); // for the shared Observable execution
+}, 2000);
+
+//output
+// observerA: 0
+// observerA: 1
+// observerB: 1
+// observerB: 2

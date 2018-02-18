@@ -11,7 +11,7 @@
     "decorator": "nodemon ./public/decorator.js localhost 3000",
     "prototypes": "nodemon ./books/prototypes2.js localhost 3000",
     "inherit": "nodemon ./books/inherit.js localhost 3000",
-    "event":"nodemon ./books/event.js localhost 3000",
+    "event": "nodemon ./books/event.js localhost 3000",
     "this": "nodemon ./books/aboutThis.js localhost 3000 ",
     "test": "mocha public/test",
     "test1": "nodemon --exec \" mocha public/test -R list \" ",
@@ -36,6 +36,7 @@
   "dependencies": {
     "@types/node": "^8.5.2",
     "chalk": "^2.3.0",
-    "mongodb": "^3.0.1"
+    "mongodb": "^3.0.1",
+    "rxjs": "^5.5.6"
   }
 }
