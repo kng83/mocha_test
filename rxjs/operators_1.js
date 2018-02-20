@@ -3,6 +3,8 @@
 // This is a pure operation:
 // the previous Observable stays unmodified.
 // To co wyzej jest najwazniejsze
+// Ponizej funckja output wymusza na input subskrybowanie
+
 
 const Rx =require('rxjs');
 

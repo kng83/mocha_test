@@ -18,8 +18,10 @@ console.log(doubledNumbers);
 //przy kazdym ruchu iteratora jest wykonywana funkcja
 //najbardzej trzeba uwazac zeby niezgubic returna
 
-let doubled = numbers.map(function(number){
-    return number *2
-});
+// let doubled = numbers.map(function(number){
+//     return number *2
+// });
+
+let doubled = numbers.map(number => number *2);
 
 console.log(doubled);
