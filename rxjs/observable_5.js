@@ -30,7 +30,8 @@ promiseObservable.subscribe((value) => console.log(value));
 
 // teraz sprubjemy podpiac observable do callback
 let callback = function () {
-   console.log('Igor tu jest')
+    console.log('tu jest igor');
+    return this;
 };
 
 // Pruba bindowania do callback'a , bidujemy do setTimeout
@@ -38,4 +39,7 @@ let callback = function () {
 // to dziala ale za chiny nie mozna dostac sie do Igora
 
 let cbObservable = Rx.Observable.bindCallback(setTimeout);
-cbObservable(callback,4000).subscribe();
+let some =cbObservable(callback,4000).subscribe();
+
+
+
