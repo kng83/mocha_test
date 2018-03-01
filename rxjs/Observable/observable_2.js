@@ -22,7 +22,7 @@ let observable = Rx.Observable.create(observer => {
     let interval = setInterval(() => {
 
         observer.next('Hallo');
-    }, 1000)
+    }, 1000);
 
 
     return function unsubscribe() {
@@ -41,7 +41,7 @@ let myObservable = observable.subscribe(observer => {
 });
 
 
-//iterval example
+// iterval example
 // przekazywany jest licznik do subscribe
 let myObs = Rx.Observable.interval(1000);
 
