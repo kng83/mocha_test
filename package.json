@@ -16,7 +16,8 @@
     "test": "mocha public/test",
     "test1": "nodemon --exec \" mocha public/test -R list \" ",
     "ubertest": "concurrently \"npm run tsc \" \"npm run test1\"",
-    "solltest": "npm run tsc | npm run test1"
+    "solltest": "npm run tsc | npm run test1",
+    "check": "tsc-watch --onSuccess \"node . \""
   },
   "devDependencies": {
     "@types/chai": "^4.0.10",
