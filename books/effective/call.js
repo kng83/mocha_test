@@ -15,14 +15,14 @@ console.log(myObj.show()); //kot
 console.log(myObj.show.call(mySecond)); //'pawel'
 
 // wersja po co nam jest call. Jest to wersja bez prototypu a jednak dziala
-
-function f(arg1, arg2) {
+// funkcja ktora zwraca sume
+function sum(arg1, arg2) {
     return arg1 + arg2;
 }
 
 let obj = {name: 'pawel'};
 
-obj.temporary = f; // przypisujemy funkcje do wlasciwosci obiektu
+obj.temporary = sum; // przypisujemy funkcje do wlasciwosci obiektu
 let arg1 = 1, arg2 = 2;
 let result = obj.temporary(arg1, arg2); // wywlujemy to funkcje
 console.log(result, Object.keys(obj)); //3 ['name','temporary']
@@ -31,13 +31,13 @@ console.log(Object.keys(obj));// ['name']
 
 
 // to pierwszy przyklad call ale funkcja nie nalezy do obiektu
-function f2(arg1, arg2) {
+function sum2(arg1, arg2) {
     return arg1 + arg2;
 }
 
 let obj2 = {name: 'bobo'};
 
-let res2 = f2.call(obj2, 2, 2);
+let res2 = sum2.call(obj2, 2, 2);
 console.log(res2);
 console.log(Object.keys(obj2)); // name
 

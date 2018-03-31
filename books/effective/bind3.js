@@ -1,4 +1,3 @@
-// pruba wstrzykniecia obiektu do obiektu przy uzyciu bind
 
 
 let first = {
