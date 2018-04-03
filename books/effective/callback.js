@@ -18,9 +18,9 @@ for (let i = 0; i < 10; i++) {
 console.log(digits);
 
 // teraz robimy z tego callback
-function buildString (n,callback){
+function buildString(n, callback) {
     let result = "";
-    for(let i=0; i<n; i++){
+    for (let i = 0; i < n; i++) {
         result += callback(i)
     }
     return result;
@@ -29,45 +29,47 @@ function buildString (n,callback){
 // test alphabet
 
 let alphIndex = "a".charCodeAt(0);
-let alphabet2 = buildString(26,function(i){
-    return String.fromCharCode(alphIndex + i );
+let alphabet2 = buildString(26, function (i) {
+    return String.fromCharCode(alphIndex + i);
 });
 
-console.log(alphabet2,'!!!alphabet2'); //abc...z
+console.log(alphabet2, '!!!alphabet2'); //abc...z
 
 // test z digits
 
-let dig ="";
+let dig = "";
 
-let digResult = buildString(10,function(i){
+let digResult = buildString(10, function (i) {
     return i;
 });
-console.log(digResult,'!!!digResult'); //01234...9
+console.log(digResult, '!!!digResult'); //01234...9
 
 //my map
-function myMap(arr,callback){
-    for(let i=0 ;i<arr.length;i++){
+function myMap(arr, callback) {
+    for (let i = 0; i < arr.length; i++) {
         arr[i] = callback(arr[i]);
     }
     return arr;
 }
 
-let mulByTwo= myMap([10,20,30],(value)=>{
-    return value*2 ;
+let mulByTwo = myMap([10, 20, 30], (value) => {
+    return value * 2;
 });
 console.log(mulByTwo);// [20,40,60];
 
-// sprawdzenie jak byloby z prototypem
+/*
+ * sprawdzenie jak byloby z prototypem
+ */
 
-Array.prototype.superMap = function(callback){
-    for(let i=0;i<this.length;i++){
-        this[i]=callback(this[i])
+Array.prototype.superMap = function (callback) {
+    for (let i = 0; i < this.length; i++) {
+        this[i] = callback(this[i])
     }
     return this;
 };
 
-let mulByThree= [10,15,20].superMap((value)=>{
-    return value *3;
+let mulByThree = [10, 15, 20].superMap((value) => {
+    return value * 3;
 });
 
 console.log(mulByThree); // [30,45,60]

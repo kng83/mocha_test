@@ -23,7 +23,7 @@ class MyObject{
 }
 
 MyObject.prototype.onClick = function(e) {
-    let t=this;
+    let t = this;
     console.log(e);
     // do something with [t]...
     // without bind the context of this function wouldn't be a MyObject

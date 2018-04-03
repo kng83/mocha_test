@@ -1,3 +1,4 @@
+
 // They all attach this into function (or object) and the
 // difference is in the function invocation (see below).
 // call attaches this into function and executes the function immediately

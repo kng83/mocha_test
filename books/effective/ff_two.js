@@ -4,7 +4,6 @@ function wrapElementes(el) {
     let result = [];
     for (let i = 0 ; i<el.length; i++)
     {
-
         (function () {
             let j = i;
             result[i] = (function () {
