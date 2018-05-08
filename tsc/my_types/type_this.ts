@@ -1,3 +1,4 @@
+// zamiast T mozemy tu podstawic this
 type HeadAndTail<T> = T & { first: string, tail: string };
 
 // typ this mozemy dac tylko w interfejsie dotyczacym klasy dlatego musimy go podac tutaj generycznie

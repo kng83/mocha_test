@@ -20,4 +20,6 @@ class Look {
   
   let some = new Somer();
   console.log(some.verify.myage);
+
+
   
