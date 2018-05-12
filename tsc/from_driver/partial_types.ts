@@ -16,4 +16,4 @@ class Person {
 }
 
 let persons = new Person({wozkowy:'woz',admin:'ad'})
-console.log(persons.wozkowy) // poprawnie wozkoy jest obliczany ale typ jest nie znany
+// console.log(persons.wozkowy) // poprawnie wozkoy jest obliczany ale typ jest nie znany
