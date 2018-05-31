@@ -14,4 +14,5 @@ class Wrapper{
 }
 
 let w = new Wrapper([1,2,3,4]);
-let w2 =w.map(value => console.log(value));
+let w2 =w.map(value => console.log(value)); //[1,2,3,4]
+
