@@ -19,10 +19,10 @@ let valDefTest: ObjectType<'kot'>;
 valDefTest = { 'kot': { name: 'kot' } }
 
 
-function getByName<K extends string>(valuDefinitions: ValueType<K>[]): VirtualObject<K> {
+function getByName<K extends string>(valueArr: ValueType<K>[]): VirtualObject<K> {
     let out = {} as VirtualObject<K>
-    for (const key in valuDefinitions) {
-        out[valuDefinitions[key].name] = valuDefinitions[key]
+    for (const key in valueArr) {
+        out[valueArr[key].name] = valueArr[key]
     }
     return out;
 }
