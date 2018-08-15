@@ -37,8 +37,3 @@ let ab = getByN([
     { controllerName: 'poko',className: new DCtrl() },
     { controllerName: 'miko',className:new UCtrl() }
     ]);
-ab.
-
-
-
-
