@@ -1,14 +1,15 @@
 {
     "compilerOptions": {
+        "target": "ES5",
         "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "module": "commonjs",
-        "noImplicitAny": true,
+        //"noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
-        "target": "es6",
       //  "outFile": "../../built/local/tsc.js",
-        "outDir": "./public"
-     //   "sourceMap": true
+        "outDir": "./public",
+        "sourceMap": true
     },
     "include": [
         "src/**/*.ts"

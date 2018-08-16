@@ -1,4 +1,4 @@
-function prefix(target: Object,name: string, descriptor: PropertyDescriptor){
+function prefix(target: Object,name: string, descriptor: TypedPropertyDescriptor<(... params: any[])=> Promise<any>>){
     let method = descriptor.value as Function;
   
     if (typeof method !== 'function') {

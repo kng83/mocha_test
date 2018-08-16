@@ -25,12 +25,19 @@ sample = 'North'; // Okay
 sample = Direction.West;
 sample = Direction.South;
 
-let obj = {
+let obj44 = {
     name:'Pawel',
     age:10
 };
 
-type Ob= keyof typeof obj;
-let some: Ob;
-some = 'name'; //'name'| 'age'
-console.log(some); //'name'
+
+
+
+function strEnum2<T extends string,D >(o: Array<T>,arr:Array<D>): {[K in T]:  D} {
+    return o.reduce((res, key,index) => {
+        res[key] = arr[index]
+        return res;
+    }, Object.create(null));
+}
+
+let tod = strEnum2(['Pawel','Bobo'],[3,'pise']);
