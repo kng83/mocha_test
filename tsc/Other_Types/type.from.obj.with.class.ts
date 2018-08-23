@@ -21,31 +21,3 @@ function sommer<T extends any ,K extends { [Key in keyof T]: InstanceType<T[Key]
 let min = sommer({s:Some4,d:Dome}); //s:Some4 d:Dome
 
 
-
-
-// class Some {
-//     age = 10;
-//     public static makeInstance<Some>() {
-//       return new Some();
-//     }
-//   }
-//   class Dome extends Some {
-  
-//   }
-  
-//   let me: Some;
-//   let some = {
-//     s: Some,
-//     d: Dome
-//   }
-  
-//   function sommer< T extends any >(o: T) {
-//     let output = {} as {[Key in keyof T]:InstanceType<T[Key]>}
-//     for (let key in o) {
-//       output[key] = new o[key]();
-//     }
-//     return output;
-//   }
-  
-//   let min2 = sommer(some);
-//   min2

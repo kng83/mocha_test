@@ -31,4 +31,3 @@ function createServices<T extends any, K extends { [Key in keyof T]: InstanceTyp
 
 let services = makingServices({ userService: UserService10, messageService: MessageService10 })(dbKot);
 console.log(services);
-s
